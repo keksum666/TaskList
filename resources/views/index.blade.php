@@ -19,10 +19,20 @@
                         @csrf
                         <div class="form-group">
                             <label for="task" class="font-weight-bold">Task</label>
-                            <input type="text" class="form-control" id="task" name="task">
+                            <input type="text" class="form-control" id="task" name="task" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Add task</button>
                     </form>
+                    @if(count($errors)>0)
+                        <div class="alert alert-danger mt-2">
+                            <p>Errors:</p>
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="card mt-3">
